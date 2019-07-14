@@ -32,14 +32,12 @@ router.get('/callback', async function(req, res, next) {
   let fecthTokenUrlRes = await request(fullFetchTokenUrl);
   let { access_token, expires_in, refresh_token } = queryString.parse(fecthTokenUrlRes);
 
-
   // 获取openid
   let fullFetchMeUrl = fecthMeUrl + queryString.stringify({ access_token});
   let fecthMeResult = await request(fullFetchMeUrl);
   // 返回值为 callback( {"client_id":"YOUR_APPID","openid":"YOUR_OPENID"} )， 需要清洗一下数据
   const { openid } = JSON.parse( fecthMeResult.slice(fecthMeResult.indexOf('{'),  fecthMeResult.lastIndexOf('}') + 1) );
 
-  // return res.send(openid);
 
   // 获取userInfo
   const op = {

@@ -25,7 +25,7 @@ app.use(session({
   secret: 'saddguiasidgauyigai',
   resave: true,
   saveUninitialized: true,
-  store: new MongoStore({
+  store: new MongoStore({     // 把登录态放进mongodb中
     url: 'mongodb://localhost/oauth'
   })
 }));

@@ -32,19 +32,19 @@ router.post('/signin', async function(req, res, next) {
   let body = req.body;  // {username, passward, email, gender}
   let oldUser = await User.findOne(body);
   if(oldUser){
-    req.session.user = oldUser;
+    req.session.user = oldUser; // 保持登录态
     res.redirect('/')
   }else{
     res.redirect('back')
   }
 });
 
-
 // 退出登录
 router.get('/signout', async function(req, res, next) {
-    req.session.user = '';
+    req.session.user = '';  // 清除登录态
     res.redirect('/users/signin')
 });
+
 
 // 获取用户信息
 router.get('/get_user_info', async function(req, res, next) {
@@ -53,8 +53,7 @@ router.get('/get_user_info', async function(req, res, next) {
   if(!item){ // token 错误
     return res.json({ error: 'access_token错误'})
   }
-  console.log('>>>>>>>', item.permissions);
-  let findItem = item.permissions.find(item => item.route === 'get_user_info');
+  let findItem = item.permissions.find(item => item.route === 'get_user_info'); //判定是否有该项的访问权限
   if(findItem){
     let user = await User.findById(openid);
     res.json(user);
