@@ -26,13 +26,13 @@ npm install && npm start
 
 #### 授权流程
 
-1.前端页面带着appId、redirect_url跳转到第三方授权页面
-2.第三方授权服务器会校验appId与redirec_url是否匹配，不匹配会提示，匹配会显示要授权的网站
-3.如果用户已登录第三方授权网站，可直接点击头像跳转，如果没有，则输入用户名密码
-4.第三方服务器根据返回的appId redirect_url scope以及 username和password判定是否返回授权码code
-5.如果返回，授权页面则跳转到www.redirect_url.com?code=asdgh
-6.客户端服务器client会根据拿到的code,配合服务器中的appkey， appId， redirect_url向授权服务器拿access_token、refresh_token_expires_in; 一般有效期3个月
-7.客户端服务器使用access_token获取openid
-8.后续客户端可根据access_token、appId以及openid获取用户信息
+1. 前端页面带着appId、redirect_url跳转到第三方授权页面
+2. 第三方授权服务器会校验appId与redirec_url是否匹配，不匹配会提示，匹配会显示要授权的网站
+3. 如果用户已登录第三方授权网站，可直接点击头像跳转，如果没有，则输入用户名密码
+4. 第三方服务器根据返回的appId redirect_url scope以及 username和password判定是否返回授权码code
+5. 如果返回，授权页面则跳转到www.redirect_url.com?code=asdgh
+6. 客户端服务器client会根据拿到的code,配合服务器中的appkey， appId， redirect_url向授权服务器拿access_token、refresh_token_expires_in; 一般有效期3个月
+7. 客户端服务器使用access_token获取openid
+8. 后续客户端可根据access_token、appId以及openid获取用户信息
 
                                                   
