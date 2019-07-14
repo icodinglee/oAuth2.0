@@ -1,0 +1,23 @@
+<%include header.html%>
+    <a href="/oauth2.0/permission" class="authBtn" style="margin: 10px 10px 10px 0">创建权限</a>
+    <table>
+        <tr>
+            <td>权限名称</td>
+            <td>路径地址</td>
+        </tr>
+        <%
+            for(let i = 0; i < permissions.length; i++){
+                %>
+                    <tr>
+                        <td>
+                            <%=permissions[i].name%>
+                        </td>
+                        <td>
+                            <%=permissions[i].route%>
+                        </td>
+                    </tr>
+                <%
+            }
+        %>
+    </table>
+<%include footer.html%>

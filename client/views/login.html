@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        <%=title%>
+    </title>
+    <style>
+        *{
+            margin: 0;
+        }
+        .container{
+            width: 400px;
+            margin: 100px auto;
+        }
+        .inner{
+          
+        }
+        .tab{
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            border-bottom: 1px solid #ccc;
+            background: #eee;
+            margin-bottom: 30px;
+        }
+        .tab ._{
+            width: 200px;
+            line-height: 40px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .selected{
+            background: #ddd;
+        }
+        h4{
+            text-align: center;
+            line-height: 60px;
+        }
+        p{
+            height: 50px;
+            font-size: 15px;
+            text-align: center;
+        }
+        .submit{
+            width: 140px;
+            line-height: 30px;
+            margin: 0 auto;
+            border: 1px solid #000;
+            text-align: center;
+            cursor: pointer;
+        }
+        #userName, #password {
+            width: 200px;
+            line-height: 25px;
+        }
+        .qq{
+            display: block;
+            line-height: 80px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container"  id="app">
+        <div class="inner">
+            <div class="tab">
+                <div :class=" type === 'login' ? '_ selected' : '_' "  @click="changeTab('login')">Login</div>
+                <div :class=" type !== 'login' ? '_ selected' : '_' " @click="changeTab('register')">Register</div>
+            </div>
+           
+            <p>username  <input type="text" name="userName" id="userName" v-model="userName"/></p>
+            <p>passward  <input type="text" name="passward" id="password" v-model="password"/></p>
+            <p v-if=" type !== 'login' ">repasswd  <input type="text" name="passward" id="password" v-model="repassword"/></p>
+            <div class="submit" value="Login"  v-on:click="login"/>{{type === 'login' ? 'Login' : 'Register'}}</div>
+            <a class="qq" href="<%=fullAuthorizationUrl%>" target='_blank'>oAuth Login</a>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                title: 'User Login',
+                userName: 1,
+                password: 2,
+                repassword: '',
+                type: 'login'
+            },
+            methods: {
+                login: function(){
+                    console.log(this.userName, this.password)
+                },
+                changeTab: function(e){
+                    this.type = e;
+                }
+            }
+        })
+
+    </script>
+
+</body>
+</html>

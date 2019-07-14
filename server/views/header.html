@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%=title%></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        * {
+            margin: 0;
+            /* user-select: none; */
+        }
+        a{
+            color: blue;
+        }
+        h1{
+            line-height: 60px;
+            color: #fff;
+            background: #2d78f4;
+            text-indent: 30px;
+        }
+        h1 span{
+            font-size: 14px;
+        }
+        .box{
+            width: 800px;
+            margin-top: 100px;
+            border-top: 1px solid #eee;
+        }
+        .continer{
+            width: 1000px;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+        .continer form{
+            display: flex;
+        }
+        .left{
+            width: 400px;
+        }
+        .right{
+            box-sizing: border-box;
+            margin-left: 80px;
+            border-left: 1px solid #ccc;
+            padding-left: 30px;
+        }
+        center{
+            line-height: 50px;
+            font-size: 24px;
+        }
+        .oauthInput{
+            width: 400px;
+            height: 40px;
+            margin: 10px auto;
+            border-radius: 2px;
+            -webkit-appearance: none;
+            appearance: none;
+            outline: none;
+            border: 1px solid #eee;
+            text-indent: 10px
+        }
+        .authBtn{
+            display: block;
+            line-height: 45px;
+            text-align: center;
+            cursor: pointer;
+            background: #3385ff;
+            color: #fff;
+            width: 200px;
+            margin: 0 auto;
+            border-radius: 2px;
+            margin-top: 20px;
+            -webkit-appearance: none;
+            appearance: none;
+            outline: none;
+        }
+        .right label{
+           display: block;
+           margin: 15px 0;
+        }
+        table{
+            border-collapse:collapse;
+        }
+        td{
+            padding:10px;
+            text-align: center;
+        }
+        tr{
+            background: #eee;
+        }
+        tr:first-child{
+            background: #2d78f4;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        授权服务&nbsp; 
+        <span>
+        <%
+            if(user){
+                %>
+                  <a href="/users/signout">退出</a>
+                  <a href="/oauth2.0/applications">查看应用列表</a>
+                  <a href="/oauth2.0/permissions">查看权限列表</a>
+                <%
+            }else{
+                %>
+                  <a href="/users/signin">登录</a>
+                  <a href="/users/signup">注册</a>
+                <%
+            }
+        %>
+        </span>
+    </h1>
+    <div class="continer">

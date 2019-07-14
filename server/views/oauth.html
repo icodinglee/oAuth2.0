@@ -1,0 +1,34 @@
+
+<%include header.html%>
+    <form method="POST">
+        <div class="left">
+            <%
+              if(user){
+                %><center><img src="<%=user.avator%>" /><%
+              }else{
+                %>
+                    <center>账号密码登录</center>
+                    <input type="text" placeholder="请输入用户名" class="oauthInput" name="username"></br>
+                    <input type="text" placeholder="请输入密码" class="oauthInput" name="password">
+                <%
+              }
+            %>
+            <button class="authBtn" type="submit">授权并登录</button>
+        </div>
+
+        <div class="right">
+            <div> <a><%=website%></a>  将获得以下权限</div>
+            <%
+                for(let i = 0; i < permissions.length; i++){
+                    %>
+                        <label>
+                             <input type="checkbox" value="<%=permissions[i]._id%>"  name="permissions" checked/>   <%=permissions[i].name%>
+                        </label>
+                    <%
+                }
+            %>
+            <div>授权后表明你已同意 <a>oAuth登录服务协议</a> </div>
+        </div>
+    <form>
+<%include footer.html%>
+
